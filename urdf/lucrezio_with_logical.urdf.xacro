@@ -49,15 +49,31 @@
   
   <!-- Ground Truth Pose Publisher Plug-in 
   <gazebo>
-  <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
-    <frameName>map</frameName>
-    <bodyName>base_link</bodyName>
-    <topicName>sbrodom</topicName>
-    <updateRate>30.0</updateRate>
-  </plugin>
-  </gazebo>
-  -->
   
+  <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+    <alwaysOn>true</alwaysOn>
+     <frameName>camera_link</frameName>
+    <bodyName>camera_link</bodyName>
+    <topicName>/odom</topicName>
+    <updateRate>100.0</updateRate>
+  </plugin>
+  
+  </gazebo> -->
+   
+  <!--  
+<gazebo>
+  <controller:ros_p3d name="my_box_controller" plugin="libgazebo_ros_p3d.so">
+    <alwaysOn>true</alwaysOn>
+    <updateRate>100.0</updateRate>
+    <bodyName>base_link</bodyName>
+    <topicName>my_box_pose_ground_truth</topicName>
+    <gaussianNoise>0.0</gaussianNoise>
+    <frameName>base_link</frameName> 
+    <interface:position name="my_box_p3d_position_iface" />
+  </controller:ros_p3d>
+  </gazebo> -->
+
+
   <!-- LEFT WHEEL -->
   <link name="left_wheel">
     <visual>
@@ -184,15 +200,15 @@
   <gazebo reference="laser_link">
     <sensor type="gpu_ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
         <scan>
           <horizontal>
-            <samples>1024</samples>
+            <samples>512</samples>
             <resolution>1</resolution>
-            <min_angle>-3.14159</min_angle>
-            <max_angle>3.14159</max_angle>
+            <min_angle>-1.571</min_angle> 
+            <max_angle>1.571</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -339,7 +355,8 @@
   <!-- Gazebo plugin for ROS Control -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
+        <robotNamespace>/</robotNamespace>  
+        <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
 

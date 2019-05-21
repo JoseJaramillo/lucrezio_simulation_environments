@@ -6,7 +6,7 @@
     <arg name="world_name" value="worlds/empty.world"/> 
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
-   <arg name="gui" value="true"/>
+    <arg name="gui" value="true"/>
     <arg name="recording" value="false"/>
     <arg name="debug" value="false"/>
   </include>
@@ -27,7 +27,7 @@
   
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <arg name="model" default="$(find lucrezio_simulation_environments)/urdf/lucrezio_with_logical.urdf.xacro"/>
-  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
         args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
         
@@ -42,7 +42,9 @@
 -->
 
   <!-- Run the controller manager -->
-  <rosparam command="load" file="$(find lucrezio_simulation_environments)/config/diffdrive.yaml" ns="lucrezio" />
-  <node name="lucrezio_controller_spawner" pkg="controller_manager" type="spawner" args="lucrezio --shutdown-timeout 3"/>
+  <rosparam file="$(find lucrezio_simulation_environments)/config/diffdrive.yaml" command="load" ns="lucrezio"/>
+  <node name="lucrezio_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="lucrezio"/>  
+
+<!-- <node name="lucrezio_controller_spawner" pkg="controller_manager" type="spawner" args="lucrezio -shutdown-timeout 3"/> -->
 
 </launch>
