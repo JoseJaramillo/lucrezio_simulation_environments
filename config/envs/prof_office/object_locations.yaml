@@ -1,2 +1,60 @@
-
-
+shelf:
+  model: shelf
+  model_type: sdf
+  position: [ 0.39, 0.98, 0.0 ]
+  orientation: [ 0.0, 0.0, 0.0 ]
+shelf_0:
+  model: shelf
+  model_type: sdf
+  position: [ 1.72, 0.98, 0.0 ]
+  orientation: [ 0.0, 0.0, 0.0 ]
+desk_shared:
+  model: desk_shared
+  model_type: sdf
+  position: [ 1.21, -1.31, 0.0 ]
+  orientation: [ 0.0, 0.0, 0.0 ]
+office_chair:
+  model: office_chair
+  model_type: sdf
+  position: [ 3.95, 0.40, 0.0 ]
+  orientation: [ 0.0, 0.0, -1.48 ]
+office_chair_0:
+  model: office_chair
+  model_type: sdf
+  position: [ 0.22, -0.99, 0.0 ]
+  orientation: [ 0.0, 0.0, -1.64 ]
+office_chair_1:
+  model: office_chair
+  model_type: sdf
+  position: [ 0.21, -1.72, 0.0 ]
+  orientation: [ 0.0, 0.0, -1.55 ]
+office_chair_2:
+  model: office_chair
+  model_type: sdf
+  position: [ 2.07, -1.06, 0.0 ]
+  orientation: [ 0.0, 0.0, 1.35 ]
+office_chair_3:
+  model: office_chair
+  model_type: sdf
+  position: [ 2.10, -1.7, 0.0 ]
+  orientation: [ 0.0, 0.0, 1.44 ]
+desk_prof:
+  model: desk_prof
+  model_type: sdf
+  position: [ 5.09, 0.27, 0.0 ]
+  orientation: [ 0.0, 0.0, 3.14 ]
+monitor_pc:
+  model: monitor_pc
+  model_type: sdf
+  position: [ 5.13, 0.6, 0.76 ]
+  orientation: [ 0.0, 0.0, 0.47 ]
+monitor_pc_0:
+  model: monitor_pc
+  model_type: sdf
+  position: [ 5.12, -0.17, 0.76 ]
+  orientation: [ 0.0, 0.0, -0.38 ]
+books:
+  model: books
+  model_type: sdf
+  position: [ 3.78, -0.62, 0.76 ]
+  orientation: [ 0.0, 0.0, 0.1 ]
