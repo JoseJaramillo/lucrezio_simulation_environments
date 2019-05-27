@@ -45,6 +45,7 @@
   <rosparam file="$(find lucrezio_simulation_environments)/config/diffdrive.yaml" command="load" ns="lucrezio"/>
   <node name="lucrezio_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="lucrezio"/>  
 
+
 <!-- <node name="lucrezio_controller_spawner" pkg="controller_manager" type="spawner" args="lucrezio -shutdown-timeout 3"/> -->
 
 </launch>
