@@ -1,0 +1,22 @@
+kitchen:
+- table_2person_1
+- refrigerator_white_1
+- chair_fancy_1
+- chair_fancy_1_0
+- chair_fancy_1_1
+- drawer_kitchen_1
+- drawer_kitchen_1_0
+- microwave
+- burner_stove
+- sink
+- trashcan
+living_room:
+- chair_foldable
+- sofa_large_1
+- table_round_1
+- tv_samsung
+- table_tv
+corridor:
+- rack_coat
+- drawer
+

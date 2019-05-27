@@ -61,6 +61,13 @@ void LogicalCameraPlugin::OnUpdate(){
     if (logical_image.model(i).name() == "test_apartment_2" ||
         logical_image.model(i).name() == "ground_plane" ||
         logical_image.model(i).name() == "apartment_1"||
+        logical_image.model(i).name() == "apartment_2"||
+        logical_image.model(i).name() == "apartment_3"||
+        logical_image.model(i).name() == "apartment_4"||
+        logical_image.model(i).name() == "grass_robocup"|
+        logical_image.model(i).name() == "rococolab"||
+        logical_image.model(i).name() == "phd_office"||
+        logical_image.model(i).name() == "prof_office"||
         logical_image.model(i).name() == "orazio_world"||
         logical_image.model(i).name() == "")
       continue;
