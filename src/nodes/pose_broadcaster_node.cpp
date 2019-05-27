@@ -27,7 +27,6 @@ public:
     //ros::Time laser_stamp = laser_msg->header.stamp; 
     ros::Time laser_stamp = ros::Time(0);
     tf::StampedTransform camera_odom_tf;
-    std::cerr << "5";
     try{
       _listener.waitForTransform("/odom",
                                  "/camera_link",
@@ -109,13 +108,9 @@ protected:
 };
 
 int main(int argc, char **argv){
-  std::cerr << "0";
   ros::init(argc, argv, "pose_broadcaster_node");
   ros::NodeHandle nh;
-  std::cerr << "1";
   PoseBroadcaster dummy(nh);
-  std::cerr << "2";
   ros::spin();
-  std::cerr << "3";
   return 0;
 }
