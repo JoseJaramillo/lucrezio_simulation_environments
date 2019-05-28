@@ -41,11 +41,3 @@ ta2_tv_samsung:
   position: [ -3.431988, 0.0, 0.576413 ]
   orientation: [ 0.0, 0.0, 1.57 ]
 
-ta2_cabinet_ikea_malm_big:
-  model: cabinet_ikea_malm_big
-  model_type: sdf_apartzwieback:
-  model: zwieback
-  model_type: sdf
-  position: [ 1.646010, -1.036690, 0.750673 ]
-  orientation: [ 0.0, 0.0, 0.0 ]
-
