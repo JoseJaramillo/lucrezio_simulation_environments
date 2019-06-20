@@ -42,8 +42,7 @@
     </inertial>
   </link>
   <gazebo reference="base_link">
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
+
     <material>Gazebo/Black</material>
   </gazebo>
   
@@ -96,7 +95,7 @@
   <gazebo reference="left_wheel">
     <mu1 value="200.0"/>
     <mu2 value="100.0"/>
-    <kp value="10000000.0" />
+    <kp value="10000000000.0" />
     <kd value="1.0" />
     <material>Gazebo/Grey</material>
   </gazebo>
@@ -142,7 +141,7 @@
   <gazebo reference="right_wheel">
     <mu1 value="200.0"/>
     <mu2 value="100.0"/>
-    <kp value="10000000.0" />
+    <kp value="10000000000.0" />
     <kd value="1.0" />
     <material>Gazebo/Grey</material>
   </gazebo>
@@ -255,7 +254,7 @@
   </link>
 
   <!-- CAMERA JOINT -->
-  <joint name="camera_joint" type="continuous">
+  <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 0 0.5" rpy="0 0 0"/>
     <parent link="base_link"/>
@@ -326,7 +325,7 @@
   </link>
   
   <!-- LOGICAL CAMERA JOINT -->
-  <joint name="logical_camera_joint" type="continuous">
+  <joint name="logical_camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 0 0.5" rpy="0 0 0"/>
     <parent link="base_link"/>

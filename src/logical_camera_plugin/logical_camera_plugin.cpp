@@ -64,7 +64,7 @@ void LogicalCameraPlugin::OnUpdate(){
         logical_image.model(i).name() == "apartment_2"||
         logical_image.model(i).name() == "apartment_3"||
         logical_image.model(i).name() == "apartment_4"||
-        logical_image.model(i).name() == "grass_robocup"|
+        logical_image.model(i).name() == "grass_robocup"||
         logical_image.model(i).name() == "rococolab"||
         logical_image.model(i).name() == "phd_office"||
         logical_image.model(i).name() == "prof_office"||
@@ -72,12 +72,13 @@ void LogicalCameraPlugin::OnUpdate(){
         logical_image.model(i).name() == "")
       continue;
 
+
     rendering::VisualPtr visual = scene->GetVisual(logical_image.model(i).name());
 
     if (!visual)
       continue;
 
-    math::Box bounding_box = visual->GetBoundingBox();
+    ignition::math::Box bounding_box = visual->BoundingBox();
 
     model_msg.pose.position.x = logical_image.model(i).pose().position().x();
     model_msg.pose.position.y = logical_image.model(i).pose().position().y();
@@ -88,9 +89,9 @@ void LogicalCameraPlugin::OnUpdate(){
     model_msg.pose.orientation.z = logical_image.model(i).pose().orientation().z();
     model_msg.pose.orientation.w = logical_image.model(i).pose().orientation().w();
 
-    model_msg.size.x = bounding_box.GetXLength();
-    model_msg.size.y = bounding_box.GetYLength();
-    model_msg.size.z = bounding_box.GetZLength();
+    model_msg.size.x = bounding_box.XLength();
+    model_msg.size.y = bounding_box.YLength();
+    model_msg.size.z = bounding_box.ZLength();
 
 //    model_msg.min.x = bounding_box.GetCenter().x - bounding_box.GetSize().x/2.0;
 //    model_msg.min.y = bounding_box.GetCenter().y - bounding_box.GetSize().y/2.0;
@@ -101,13 +102,13 @@ void LogicalCameraPlugin::OnUpdate(){
 //    model_msg.max.z = bounding_box.GetCenter().z + bounding_box.GetSize().z/2.0;
 
 
-    model_msg.min.x = bounding_box.min.x;
-    model_msg.min.y = bounding_box.min.y;
-    model_msg.min.z = bounding_box.min.z;
+    model_msg.min.x = bounding_box.Min().X();
+    model_msg.min.y = bounding_box.Min().Y();
+    model_msg.min.z = bounding_box.Min().Z();
 
-    model_msg.max.x = bounding_box.max.x;
-    model_msg.max.y = bounding_box.max.y;
-    model_msg.max.z = bounding_box.max.z;
+    model_msg.max.x = bounding_box.Max().X();
+    model_msg.max.y = bounding_box.Max().Y();
+    model_msg.max.z = bounding_box.Max().Z();
 
     model_msg.type = logical_image.model(i).name();
 

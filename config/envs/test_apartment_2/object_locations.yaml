@@ -2,13 +2,13 @@ ta2_sink:
   model: sink
   model_type: sdf
   position: [ 1.53230, 2.204468, 0.0 ]
-  orientation: [ 0.0, 0.0, 0 ]
+  orientation: [ 0.0, 0.0, 0.0 ]
   
 ta2_burner_stove:
   model: burner_stove
   model_type: sdf
   position: [ 2.868422, 2.205050, 0.0 ]
-  orientation: [ 0.0, 0.0, 0 ]
+  orientation: [ 0.0, 0.0, 0.0 ]
   
 ta2_table_ikea_bjursta:
   model: table_ikea_bjursta
@@ -32,7 +32,7 @@ ta2_couch:
 ta2_table_tv:
   model: table_tv
   model_type: sdf
-  position: [ -3.507171, 0.0, 0 ]
+  position: [ -3.507171, 0.0, 0.0 ]
   orientation: [ 0.0, 0.0, -1.57 ]
 
 ta2_tv_samsung:
