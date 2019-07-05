@@ -2,6 +2,9 @@
 <launch>
 
   <!-- Launch the empty world -->
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find lucrezio_simulation_environments)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="worlds/empty.world"/> 
     <arg name="paused" value="false"/>
@@ -26,7 +29,7 @@
   <node name="spawn_objects" pkg="lucrezio_simulation_environments" type="spawn_object.py" args="all"/>
   
   <!-- push robot_description to factory and spawn robot in gazebo -->
-  <arg name="model" default="$(find lucrezio_simulation_environments)/urdf/lucrezio_with_logical_noLaser.urdf.xacro"/>
+  <arg name="model" default="$(find lucrezio_simulation_environments)/urdf/lucrezio_with_logical.urdf.xacro"/>
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
         args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
