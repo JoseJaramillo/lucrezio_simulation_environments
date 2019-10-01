@@ -58,7 +58,7 @@ void LogicalCameraPlugin::OnUpdate(){
   for(int i=0; i < number_of_models; i++){
     lucrezio_simulation_environments::Model model_msg;
 
-    if (!logical_image.model(i).name().find("ignore"))
+    if (!logical_image.model(i).name().find("ignore") || !logical_image.model(i).name().find("phd_office_office_chair") )
       continue;
 
     if (logical_image.model(i).name() == "restaurant"||

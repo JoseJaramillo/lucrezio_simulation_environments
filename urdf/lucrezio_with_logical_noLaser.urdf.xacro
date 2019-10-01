@@ -93,8 +93,8 @@
     </inertial>
   </link>
   <gazebo reference="left_wheel">
-    <mu1 value="200.0"/>
-    <mu2 value="100.0"/>
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
     <kp value="10000000000.0" />
     <kd value="1.0" />
     <material>Gazebo/Grey</material>
@@ -139,8 +139,8 @@
     </inertial>
   </link>
   <gazebo reference="right_wheel">
-    <mu1 value="200.0"/>
-    <mu2 value="100.0"/>
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
     <kp value="10000000000.0" />
     <kd value="1.0" />
     <material>Gazebo/Grey</material>

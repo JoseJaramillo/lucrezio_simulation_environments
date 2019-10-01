@@ -183,9 +183,9 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 # install(PROGRAMS
-#   scripts/my_python_script
+#   scripts/spawn_object
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+#)
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
@@ -214,6 +214,7 @@ install(DIRECTORY
   #launch 
   #rviz 
   urdf
+  scripts
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
   
 execute_process(COMMAND cp -a ${CMAKE_SOURCE_DIR}/lucrezio_simulation_environments/models/. $ENV{HOME}/.gazebo/models)

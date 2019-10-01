@@ -19,11 +19,11 @@
         <box size="${base_length} ${base_width} ${base_height}"/>
       </geometry>
     </visual>
-    <collision>
+    <!--collision>
       <geometry>
         <box size="${base_length} ${base_width} ${base_height}"/>
       </geometry>
-    </collision>
+    </collision-->
     <visual>
       <origin xyz="-${base_length/2 - base_height/2} 0 -${base_height/2}" rpy="0 0 0" />
       <geometry>
@@ -94,10 +94,10 @@
     </inertial>
   </link>
   <gazebo reference="left_wheel">
-    <mu1 value="1.5"/>
-    <mu2 value="1.5"/>
+    <mu1 value="200.0"/>
+    <mu2 value="100.0"/>
     <kp value="10000000.0" />
-    <kd value="100.0" />
+    <kd value="1.0" />
     <material>Gazebo/Grey</material>
   </gazebo>
 
@@ -140,10 +140,10 @@
     </inertial>
   </link>
   <gazebo reference="right_wheel">
-    <mu1 value="1.5"/>
-    <mu2 value="1.5"/>
+    <mu1 value="200.0"/>
+    <mu2 value="100.0"/>
     <kp value="10000000.0" />
-    <kd value="100.0" />
+    <kd value="1.0" />
     <material>Gazebo/Grey</material>
   </gazebo>
 
@@ -168,12 +168,12 @@
 
   <!-- LASER -->
   <link name="laser_link">
-    <collision>
+    <!--collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <box size="0.1 0.1 0.1" />
       </geometry>
-    </collision>
+    </collision-->
     <!--visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -191,30 +191,39 @@
   <!-- LASER JOINT -->
   <joint name="laser_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="0.1 0 0.1" rpy="0 0 0" />
+    <origin xyz="0.1 0 -0.05" rpy="0 0 0" />
     <parent link="base_link" />
     <child  link="laser_link" />
   </joint>
 
   <!-- HOKUYO SENSOR -->
   <gazebo reference="laser_link">
-    <sensor type="ray" name="head_hokuyo_sensor">
+    <sensor type="ray" name="head_hokuyo_sensor"> <!-- type="gpu_ray" -->
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
-      <update_rate>20</update_rate>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
       <ray>
+        <!--scan>
+          <horizontal>
+            <samples>512</samples>
+            <resolution>1</resolution>
+            <min_angle>${-(60.0*M_PI/360.0)}</min_angle> 
+            <max_angle>${+(60.0*M_PI/360.0)}</max_angle>
+          </horizontal>
+        </scan-->
         <scan>
           <horizontal>
-            <samples>1024</samples>
+            <samples>512</samples>
             <resolution>1</resolution>
-            <min_angle>-3.14</min_angle> 
-            <max_angle>3.13</max_angle>
+            <min_angle>-1.571</min_angle> 
+            <max_angle>1.571</max_angle>
           </horizontal>
         </scan>
+        
         <range>
-          <min>0.2</min>
-          <max>12.0</max>
-          <resolution>0.1</resolution>
+          <min>0.20</min>
+          <max>15.0</max>
+          <resolution>0.01</resolution>
         </range>
         <noise>
           <type>gaussian</type>
@@ -222,7 +231,7 @@
           <stddev>0.0</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so"> <!-- "libgazebo_ros_gpu_laser.so -->
         <topicName>/scan</topicName>
         <frameName>laser_link</frameName>
       </plugin>
@@ -255,7 +264,7 @@
   </link>
 
   <!-- CAMERA JOINT -->
-  <joint name="camera_joint" type="continuous">
+  <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 0 0.5" rpy="0 0 0"/>
     <parent link="base_link"/>
@@ -326,7 +335,7 @@
   </link>
   
   <!-- LOGICAL CAMERA JOINT -->
-  <joint name="logical_camera_joint" type="continuous">
+  <joint name="logical_camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 0 0.5" rpy="0 0 0"/>
     <parent link="base_link"/>
@@ -356,7 +365,6 @@
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
         <robotNamespace>/</robotNamespace>  
-        <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
 
